@@ -15,7 +15,11 @@ body {
   color: green;
 }
 
-.Group1, .Group2, .Group3, .Group4, .Group5 {
+.Group1,
+.Group2,
+.Group3,
+.Group4,
+.Group5 {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 0.5em;
