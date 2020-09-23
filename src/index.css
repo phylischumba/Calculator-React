@@ -5,3 +5,22 @@ body {
   margin-top: 2em;
   font-size: 2em;
 }
+
+.Groups {
+  width: 70%;
+  margin: auto;
+}
+
+.result {
+  color: green;
+}
+
+.Group1,
+.Group2,
+.Group3,
+.Group4,
+.Group5 {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 0.5em;
+}

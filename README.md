@@ -4,10 +4,11 @@
 
 ### Built With
 - React
-- JavaScript, HTML & CSS
+- JavaScript
+- HTML & CSS
 
 ### Live Demo
-[Live link here](https://phyl-calculator-app.herokuapp.com/)
+[Live link here](https://phyl-calc-app.herokuapp.com/)
 
 ### Getting Started
 To get a local copy up and running follow these simple example steps.
