@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function Button({ name, color, wide }) {
-
   return (
     <div className={wide ? 'zerobtn-style' : 'button-style'}>
-      <button type="button" className={color}>{ name }</button>
+      <button type="button" className="name-buttons" style={{ backgroundColor: color }}>{ name }</button>
     </div>
   );
 }
