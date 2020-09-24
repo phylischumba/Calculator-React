@@ -29,7 +29,7 @@ export default function ButtonPanel() {
         <Button name="+" />
       </div>
       <div className="Group5">
-        <Button name="0" />
+        <Button name="0" wide />
         <Button name="." />
         <Button name="=" />
       </div>
