@@ -4,10 +4,10 @@ body {
   font-size: 2em;
 }
 
-#root {
-  background-color: rgb(172, 156, 164);
+.app {
   width: 700px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .Group1,
