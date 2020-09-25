@@ -6,7 +6,7 @@ import Display from './Display';
 
 export default function App() {
   return (
-    <div>
+    <div className="app">
       <Display />
       <ButtonPanel />
     </div>
