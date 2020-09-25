@@ -1,3 +1,5 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/default-props-match-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -11,6 +13,7 @@ export default function Button({ name, color, wide }) {
 
 Button.defaultProps = {
   color: 'orange',
+  wide: false,
 };
 
 Button.propTypes = {
