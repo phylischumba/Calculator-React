@@ -10,8 +10,7 @@ export default function operate(numberOne, numberTwo, operation) {
     result = firstNumber.plus(secondNumber);
   } else if (operation === '-') {
     result = firstNumber.minus(secondNumber);
-  } else if (operation === 'x') {  let result = 0;
-
+  } else if (operation === 'x') {
     result = firstNumber.times(secondNumber);
   } else if (operation === '÷') {
     result = firstNumber.div(secondNumber);
