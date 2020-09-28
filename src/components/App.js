@@ -17,7 +17,6 @@ export default class App extends React.Component {
   }
 
   handleClick(buttonName) {
-    console.log(buttonName);
     const calcData = { ...this.state };
     this.setState(calculate(calcData, buttonName));
   }
@@ -25,7 +24,7 @@ export default class App extends React.Component {
   render() {
     const { next, result, operation } = this.state;
     return (
-      <div className="App">
+      <div className="app">
         <Display result={next || result || operation || '0'} />
         <ButtonPanel clickHandler={buttonName => this.handleClick(buttonName)} />
       </div>
