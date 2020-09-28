@@ -1,21 +1,35 @@
-/* eslint-disable no-unused-vars */
 import Big from 'big.js';
 
-export default function operate(numberOne, numberTwo, operation) {
+const operate = (numberOne, numberTwo, operation) => {
   let result;
-  const firstNumber = Big(numberOne);
-  const secondNumber = Big(numberTwo);
+  const firstNumber = Big(numberOne || '0');
+  const secondNumber = Big(numberTwo || '0');
 
   if (operation === '+') {
     result = firstNumber.plus(secondNumber);
-  } else if (operation === '-') {
+  }
+
+  if (operation === '-') {
     result = firstNumber.minus(secondNumber);
-  } else if (operation === 'x') {
+  }
+
+  if (operation === 'X') {
     result = firstNumber.times(secondNumber);
-  } else if (operation === '÷') {
+  }
+
+  if (operation === '÷') {
+    // try {
     result = firstNumber.div(secondNumber);
-  } else if (operation === '%') {
+    // } catch (err) {
+    //   result = 'ERROR';
+    // }
+  }
+
+  if (operation === '%') {
     result = firstNumber.mod(secondNumber);
   }
-  return result;
-}
+
+  return result.toString();
+};
+
+export default operate;

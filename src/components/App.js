@@ -4,11 +4,31 @@ import ButtonPanel from './ButtonPanel';
 import Display from './Display';
 import calculate from '../logic/calculate';
 
-export default function App() {
-  return (
-    <div className="app">
-      <Display />
-      <ButtonPanel />
-    </div>
-  );
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      result: null,
+      next: null,
+      operation: null,
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(buttonName) {
+    console.log(buttonName);
+    const calcData = { ...this.state };
+    this.setState(calculate(calcData, buttonName));
+  }
+
+  render() {
+    const { next, result, operation } = this.state;
+    return (
+      <div className="App">
+        <Display result={next || result || operation || '0'} />
+        <ButtonPanel clickHandler={buttonName => this.handleClick(buttonName)} />
+      </div>
+    );
+  }
 }
