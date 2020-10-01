@@ -18,11 +18,15 @@ const operate = (numberOne, numberTwo, operation) => {
   }
 
   if (operation === '÷') {
-    result = firstNumber.div(secondNumber).toFixed();
+    try {
+      result = firstNumber.div(secondNumber).toFixed();
+    } catch (err) {
+      result = 'UNDEFINED';
+    }
   }
 
   if (operation === '%') {
-    result = firstNumber.div(Big(100)).toFixed();
+    result = (firstNumber.plus(secondNumber)).div(100).toFixed();
   }
 
   return result;
