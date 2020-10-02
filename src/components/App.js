@@ -25,7 +25,7 @@ export default class App extends React.Component {
     const { next, result, operation } = this.state;
     return (
       <div className="app">
-        <Display result={next || result || operation || '0'} />
+        <Display result={result || '0'} next={next} operation={operation} />
         <ButtonPanel clickHandler={buttonName => this.handleClick(buttonName)} />
       </div>
     );
