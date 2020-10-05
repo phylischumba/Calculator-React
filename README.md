@@ -1,6 +1,7 @@
 ## Calculator-React Project
 - This is a simple calculator for basics calculations implemented with React components
 
+![](./images/calc.png)
 
 ### Built With
 - React

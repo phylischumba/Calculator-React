@@ -1,30 +1,90 @@
+/* eslint-disable no-restricted-globals */
 import operate from './operate';
 
-export default function calculate(calcData, buttonName) {
-  let { total, next, operation } = calcData;
-  const operators = ['+', '-', '÷', 'X', '%'];
+const calculate = (data, buttonName) => {
+  const operations = ['+', '-', 'X', '÷'];
+  let { result, next, operation } = data;
 
-  if (buttonName === 'AC') {
-    total = 0;
-    next = null;
-    operation = null;
-  } else if (buttonName === '+/-') {
-    total *= -1;
-    next *= -1;
-  } else if (buttonName === '%') {
-    total = operate(total, next, operation);
-    next = null;
-    operation = null;
-  } else if (operators.includes(buttonName)) {
-    operate(total, next, operation);
-  } else if ((buttonName === '=') && (next && total)) {
-    total = operate(total, next, operation);
-    next = null;
-    operation = null;
-  } else if (buttonName === '.' && next) {
-    if (!next.includes('.')) {
-      next += '.';
+  if (buttonName === '+/-') {
+    if (next) {
+      next = (+next * -1).toString();
+    }
+    if (result && result !== 'NaN' && !next) {
+      result = (+result * -1).toString();
     }
   }
-  return { total, next, operation };
-}
+
+  if (buttonName === '%') {
+    if (next) {
+      next = operate(null, next, buttonName);
+    } else if (!isNaN(result)) {
+      result = operate(result, null, buttonName);
+    }
+  }
+
+  if (buttonName === '=') {
+    if (result === 'NaN' && next && operation) {
+      return { result: 'NaN', next: null, operation: null };
+    }
+
+    if (next) {
+      result = operate(result, next, operation);
+      next = null;
+      operation = null;
+    }
+  }
+
+  if (operations.includes(buttonName)) {
+    if (result === 'NaN' && next && operation) {
+      return { result: 'NaN', next: null, operation: buttonName };
+    }
+
+    if (result && next && operation) {
+      result = operate(result, next, operation);
+      next = null;
+    }
+    operation = buttonName;
+  }
+
+  if (buttonName === '.') {
+    if (result && !isNaN(result) && !result.split('').includes('.')) {
+      result = `${result}.`;
+    }
+    if (next && !next.split('').includes('.')) {
+      next = `${next}.`;
+    }
+    if (!next && operation && result !== 'NaN') {
+      next = '0.';
+    }
+  }
+
+  if (buttonName === 'AC') {
+    result = '0';
+    next = null;
+    operation = null;
+  }
+
+  if (!isNaN(Number(buttonName)) && (result !== '0' && result !== 'NaN') && !operation) {
+    result += buttonName;
+  }
+
+  if (!isNaN(Number(buttonName)) && result === '0' && !operation) {
+    result = buttonName;
+  }
+
+  if (!isNaN(Number(buttonName)) && operation && next !== null) {
+    next += buttonName;
+  }
+
+  if (!isNaN(Number(buttonName)) && operation && next === null) {
+    next = buttonName;
+  }
+
+  if (result === 'NaN' && !isNaN(buttonName) && !operation) {
+    result = buttonName;
+  }
+
+  return { result, next, operation };
+};
+
+export default calculate;
